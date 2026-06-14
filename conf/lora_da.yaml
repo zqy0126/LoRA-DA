@@ -1,0 +1,67 @@
+dry_run: false
+train_limit: 100000
+wandb:
+  project: xxx
+  name: lora-da-metamath100k-gsm8k-grad256-fisher256-beta0p03-gamma1024-scale1-final
+  entity: xxx
+model:
+  name: meta-llama/Llama-2-7b-hf
+  type: CausalLM
+  epochs: 1
+  per_device_batch_size: 8
+  real_batch_size: 32
+  bf16: true
+  eval_epochs: 1
+  early_stopping_patience: 3
+  max_length: 1024
+  logging_steps: 1
+  learning_rate: 0.0002
+  weight_decay: 0.0
+  prec_reg: 1.0e-06
+  saving: false
+  do_eval: false
+  save_strategy: steps
+  save_steps: 3125
+  save_total_limit: 1
+init:
+  mode: lora_da
+  direction: LoRA-DA
+  bsz: 1
+  iters: 256
+  max_length: 1024
+  dtype: fp32
+  scale: stable
+  stable_gamma: 1024
+  fisher_samples: 256
+  fisher_bsz: 1
+  fisher_damping: 1.0e-06
+  fisher_output_damping_ratio: null
+  normalize_variance_guidance: false
+  output_fisher_mode: diagonal
+  sample_selection: head
+  sample_seed: ${seed}
+  fisher_layers_per_pass: 8
+  lobpcg_niter: 10
+  normalize_delta: true
+  delta_svd_niter: 16
+  delta_normalization_power: 1.0
+  delta_normalization_reference: 1.0
+  da_bias_alpha: 1.0
+  da_variance_beta: 0.03
+  balance_factors: false
+  fisher_offset: 0
+  deterministic_seed: 9
+  fisher_token_mask: attention
+peft:
+  use_peft: true
+  lora_r: 8
+  lora_relative_r: null
+  lora_target_modules: all
+  train_embeddings: false
+  use_rslora: true
+  use_loraplus: false
+  loraplus_lr_ratio: 16
+  lora_alpha: 16
+  lora_dropout: 0.0
+dataset_name: meta_math
+seed: 9
