@@ -53,3 +53,25 @@ Custom output paths can be provided as:
 ```bash
 ./eval.sh ADAPTER_PATH OUTPUT_JSON MERGED_MODEL_DIR
 ```
+
+## Experiment Artifacts
+
+Experiment weights and logs are available
+[here](https://drive.google.com/file/d/1w8yh0wKKvt-RV8_WyEUYsam2E88YB9bK/view?usp=sharing).
+
+## Acknowledgement
+
+We thank the [YuanheZ/LoRA-One](https://github.com/YuanheZ/LoRA-One)
+project for providing the codebase this work builds upon.
+
+## Citation
+
+```bibtex
+@inproceedings{zhang2026lora-da,
+  title={LoRA-DA: Data-Aware Initialization for Low-Rank Adaptation via Asymptotic Analysis},
+  author={Zhang, Qingyue and Chu, Chang and Peng, Tianren and Li, Qi and Luo, Xiangyang and Jiang, Zhihao and Huang, Shao-Lun},
+  booktitle={International Conference on Machine Learning},
+  year={2026},
+  organization={PMLR}
+}
+```
